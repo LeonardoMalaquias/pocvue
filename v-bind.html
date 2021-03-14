@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Diretivas: v-bind</title>
+</head>
+<body>
+
+    <div id="directives">
+       <h2>Acesse o site abixo</h2>
+       <a :href="url">Site aqui</a>
+       <p :[arg]="value">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nam odio necessitatibus commodi quam, ut maiores consequuntur corrupti voluptas accusantium maxime tempore, minima nemo eaque. Mollitia quasi aspernatur officiis placeat!</p>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#directives',
+            data:{
+                url:'https://www.google.com.br',
+                arg: 'title',
+                value: 'Paragrafo de exemplo'
+            }
+        })
+    </script>
+
+</body>
+</html>

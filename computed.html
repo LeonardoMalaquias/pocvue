@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>computed</title>
+</head>
+<body>
+
+    <div id="computed">
+        <h2>Nome: {{person.firstName}} {{person.lastName}}</h2>
+        <h2>Nome Completo (computed): {{fullName}}</h2>
+        <h2>Nome Completo (computed): {{fullName}}</h2>
+        <h2>Nome Completo (computed): {{fullName}}</h2>
+        
+        <h3>Nome Completo 3 (Methdo): {{getFullName()}}</h3>
+        <h3>Nome Completo 3 (Methdo): {{getFullName()}}</h3>
+        <h3>Nome Completo 3 (Methdo): {{getFullName()}}</h3>
+        <h3>Nome Completo 3 (Methdo): {{getFullName()}}</h3>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#computed',
+            data:{
+                person:{
+                    firstName: 'Djalma',
+                    lastName:'Sindeaux'
+                }
+            },methods:{
+                getFullName: function(){
+                    console.log('methodos')
+                    return this.person.firstName + ' ' + this.person.lastName;
+                }
+
+            },
+            computed:{
+                fullName: function(){
+                    console.log('conputed')
+                    return this.person.firstName + ' ' + this.person.lastName;
+                    
+                }
+            }    
+        })
+    </script>
+
+</body>
+</html>
