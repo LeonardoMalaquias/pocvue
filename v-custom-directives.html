@@ -15,7 +15,9 @@
 
         <h2 v-capitalize>Hello world super {{ name }}</h2>
 
-        <h2 v-custom:parametro.mod1.mod2="'Informação'">{{ name }}</h2>
+        <!-- <h2 v-custom:parametro.mod1.mod2="'Informação'">{{ name }}</h2> -->
+        <!-- <h2 v-custom:[direction]="distance">{{name}}</h2> -->
+        <h2 v-custom="{direction: argumento, distance}">{{name}}</h2>
     </div>
 
     <script src="node_modules/vue/dist/vue.min.js"></script>
@@ -27,13 +29,39 @@
             }
         });
 
+        function setDirection(element, binding) {
+            
+            element.style.margin=0;
+
+            let direction = binding.value.direction.toLowerCase();
+            let value = binding.value.distance;
+
+            switch (direction) {
+                case 'left':
+                case 'right':
+                case 'bottom':
+                case 'top':
+                    
+                    let newDirection = direction.charAt(0).toUpperCase() + direction.slice(1);
+                
+                    eval(`element.style.margin${newDirection} = value +'px';`);
+                
+                    break;
+
+                default:
+                    console.error('Informe uma opção correta');
+            }
+
+        }
+
         let app = new Vue({
             el:'#directives',
             data:{
-                name:"leonardo"
+                name:"leonardo",
+                argumento:'left',
+                distance: 150
             },
             directives:{
-
                 /*
                     Funções para Diretivas
 
@@ -64,16 +92,26 @@
                     }
                 },*/
                 custom:{
+                    bind(element, binding, vnode){
+                        setDirection(element, binding);
+                    },
                     inserted(element, binding,vnode){
 
-                        console.log(vnode);//
+                        /*
+                        console.log(vnode);
 
                         element.style.color="red";
+                        */
                     },
                     update(element, binding, vnode, oldevnode){
+
+                        setDirection(element, binding);
+
+                        /*
                         console.log(vnode, oldevnode);
 
                         element.style.textDecoration = 'underline';
+                        */
                     }
 
                 }
