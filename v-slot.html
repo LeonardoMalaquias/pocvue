@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Diretivas: v-slot</title>
+</head>
+
+<body>
+
+    <div id="directives"> <!-- v-slot:# -->
+        <text-component>
+            <template #cabecalho>
+                <h2>Esse é o cabeçalho do site</h2> 
+            </template>
+            <template #paragrafo>
+                Gláucio Daniel
+            </template>
+            
+        </text-component>
+        <text-component>
+            <template #paragrafo>
+                Nataly Rouse
+            </template>
+        </text-component>
+        <text-component>
+            <template #paragrafo>
+                Leonardo Malaquias
+            </template>
+        </text-component>
+        
+    </div>
+
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        Vue.component('text-component', {
+            template: `
+                <div>
+                    
+                    <header>
+                        
+                            <slot name="cabecalho"></slot>    
+                        
+                    </header>
+
+                    <p>
+                        <slot name="paragrafo"></slot>    
+                    </p>
+                </div>
+            `
+        });
+
+
+        let app = new Vue({
+            el: '#directives',
+            data: {
+               
+            }
+        })
+    </script>
+
+</body>
+
+</html>
