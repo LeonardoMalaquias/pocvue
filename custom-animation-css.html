@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Animações CSS</title>
+    
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+
+</head>
+
+<body>
+
+    <div id="transitions"> 
+
+        <transition name="animation-first"
+        enter-active-class="animated fadeInLeft"
+        leave-active-class="animated rotateOut">
+            <h2 v-if="show">Hcode Treinamentos Animações</h2>
+        </transition>
+
+        <button @click="show = !show"> Click Aqui</button>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        
+        let app = new Vue({
+            el: '#transitions',
+            data:{
+                show: true,
+                show2: false
+            }
+        });
+    </script>
+
+</body>
+
+</html>
