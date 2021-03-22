@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Styles Multiple</title>
+</head>
+
+<body>
+
+    <div id="styles"> 
+        <div :style="{display: displayStyle}">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur perspiciatis, quo at quibusdam dicta itaque, laboriosam maxime voluptatum autem in veniam beatae quasi explicabo nisi magnam excepturi iure voluptatibus.</div>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        
+        let app = new Vue({
+            el: '#styles',
+            data:{
+
+                displayStyle: ['-webkit-box','-moz-box-flex', '-ms-flexbox']
+            }
+        });
+    </script>
+
+</body>
+
+</html>
